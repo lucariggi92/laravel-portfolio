@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Progetti</h5>
                     <p class="card-text">Gestisci i tuoi progetti</p>
-                    <a href="#" class="btn btn-light btn-sm">Vai →</a>
+                    <a href="{{ route('admin.project.index') }}" class="btn btn-light btn-sm">Vai →</a>
                 </div>
             </div>
         </div>
