@@ -7,6 +7,9 @@
         <div class="col-12">
             <h1>Lista Progetti </h1>
         </div>
+     <a class="btn btn-primary" href="{{route("projects.create"}}">Aggiungi Progetto</a>
+
+        </button>
     </div>
 
     <div class="row">

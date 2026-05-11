@@ -5,8 +5,16 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{{ route('admin.project.index') }}" class="btn btn-secondary btn-sm mb-3">← Torna alla lista</a>
-            <div class="card">
+            <a href="{{ route('projects.index') }}" class="btn btn-secondary btn-sm mb-3">← Torna alla lista</a>
+            <div>
+                <a class="btn btn-warning" href="{{route("projects.edit", $project)}}"></a>
+            </div>
+
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Elimina
+            </button>
+
+            <div class="card">         
                 <div class="card-header bg-dark text-white">
                     <h2 class="mb-0">{{ $project->title }}</h2>
                 </div>
@@ -31,4 +39,30 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina il progetto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Vuoi eliminare il progetto?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        <form action="{{route("projects.destroy", $project"}}" method="POST">
+        @csrf
+        @method("DELETE")
+        <input type="submit" class="btn btn-danger" value="Elimina">
+    </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
