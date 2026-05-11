@@ -15,7 +15,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
-        return view("admin.projects", compact("projects"));
+        return view("projects.index", compact("projects"));
     }
 
     /**
@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view("projects.create");
     }
 
     /**
@@ -31,7 +31,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newProject = new Project();
+
+        $newProject->ttile = $data['title'];
+        $newProject->description = $data['description'];
+        $newProject->technologies = $data['technologies'];
+        $newProject->link_github = $data['link_github'];
+
+        $newproject->save();
+
+        return view("projects.show", $newProjects);
     }
 
     /**
@@ -40,7 +51,7 @@ class ProjectController extends Controller
     public function show(string $id)
     {
          $project = Project::find($id);
-              return view("admin.project", compact("project"));
+              return view("projects.show", compact("project"));
     }
 
     /**
