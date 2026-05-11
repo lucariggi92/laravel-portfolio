@@ -7,9 +7,9 @@
         <div class="col-12">
             <h1>Lista Progetti </h1>
         </div>
-     <a class="btn btn-primary" href="{{route("projects.create"}}">Aggiungi Progetto</a>
+     <a class="btn btn-primary" href="{{route("admin.projects.create")}}">Aggiungi Progetto</a>
 
-        </button>
+       
     </div>
 
     <div class="row">
@@ -36,7 +36,7 @@
                             </td>
                             <td>{{ $project->created_at->format('d/m/Y') }}</td>
                             <td>
-                                <a href="{{ route('admin.project.show', $project) }}" class="btn btn-primary btn-sm">Dettaglio</a>
+                                <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary btn-sm">Dettaglio</a>
                             </td>
                         </tr>
                     @endforeach

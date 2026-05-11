@@ -3,7 +3,7 @@
 @section("title", "Aggiungi un Progetto")
 
 @section("content")
-<form action="{{route("projects.store")}}" method="POST">
+<form action="{{route("admin.projects.store")}}" method="POST">
     @csrf
     
     <div class="form-control mb-3 d-flex flex-column">

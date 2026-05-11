@@ -5,14 +5,19 @@
 @section('content')
     <div class="row mb-4">
         <div class="col-12">
-            <a href="{{ route('projects.index') }}" class="btn btn-secondary btn-sm mb-3">← Torna alla lista</a>
-            <div>
-                <a class="btn btn-warning" href="{{route("projects.edit", $project)}}"></a>
-            </div>
+                 <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary btn-sm mb-3">← Torna alla lista</a>
+        <div class="d-flex gap-2 mb-3">
 
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        
+                <a class="btn btn-warning" href="{{route("admin.projects.edit", $project)}}">Modifica</a>
+                            <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Elimina
             </button>
+        </div>
+   
+     
+
+
 
             <div class="card">         
                 <div class="card-header bg-dark text-white">
@@ -55,7 +60,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <form action="{{route("projects.destroy", $project"}}" method="POST">
+        <form action="{{route("admin.projects.destroy", $project)}}" method="POST">
         @csrf
         @method("DELETE")
         <input type="submit" class="btn btn-danger" value="Elimina">

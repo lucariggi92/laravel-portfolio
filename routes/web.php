@@ -27,7 +27,7 @@ Route::middleware(['auth', 'verified'])
 Route::get("/",[DashboardController::class,'index'])
 ->name("index");
 
-Route::resource("project", ProjectController::class);
+Route::resource("projects", ProjectController::class);
 
 
 });
