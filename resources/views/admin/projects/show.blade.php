@@ -24,6 +24,9 @@
                     <h2 class="mb-0">{{ $project->title }}</h2>
                 </div>
                 <div class="card-body">
+                     <div class="mb-3">
+                        <p>Tipologia:{{ $project->type->name }}</p>
+                    </div>
                     <div class="mb-3">
                         <h5>Descrizione</h5>
                         <p>{{ $project->description }}</p>

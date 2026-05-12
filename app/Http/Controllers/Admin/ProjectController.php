@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 
 use Illuminate\Http\Request;
 
@@ -22,8 +23,11 @@ class ProjectController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
+
+     
     {
-        return view("admin.projects.create");
+          $types = Type::all();
+        return view("admin.projects.create", compact("types"));
     }
 
     /**
@@ -39,6 +43,7 @@ class ProjectController extends Controller
         $newProject->description = $data['description'];
         $newProject->technologies = $data['technologies'];
         $newProject->link_github = $data['link_github'];
+         $newProject->type_id = $data['type_id'];
 
         $newProject->save();
 
@@ -48,9 +53,9 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-         $project = Project::find($id);
+
               return view("admin.projects.show", compact("project"));
     }
 
@@ -61,7 +66,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
 
     {
-        return view("admin.projects.edit", compact ("project"));
+        $types = Type :: all();
+        return view("admin.projects.edit", compact ("project", "types"));
     }
 
     /**
@@ -78,6 +84,7 @@ class ProjectController extends Controller
         $project->description = $data['description'];
         $project->technologies = $data['technologies'];
         $project->link_github = $data['link_github'];
+        $project->type_id = $data['type_id'];
 
         $project->update();
 

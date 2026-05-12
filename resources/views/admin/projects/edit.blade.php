@@ -13,6 +13,15 @@
     </div>
 
      <div class="form-control mb-3 d-flex flex-column">
+        <label for="type_id"> Categoria </label>
+        <select name="type_id" id="type_id">
+            @foreach ($types as $type)
+            <option value="{{$type->id}}" {{$type->id ? "selected": ""}}>{{$type->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
+     <div class="form-control mb-3 d-flex flex-column">
         <label for="description">Descrizione</label>
         <input type="text" name="description" id="description" value="{{$project->description}}">
     </div>
