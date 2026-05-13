@@ -19,7 +19,12 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                
             </div>
+            <div class="text-center mt-5">
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Vai ai Progetti</a>
+            </div>
+            
         </div>
     </div>
 </div>
