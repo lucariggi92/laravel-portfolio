@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TechnologyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::get("/",[DashboardController::class,'index'])
 
 Route::resource("projects", ProjectController::class);
 
+Route::resource("technologies", TechnologyController::class);
 
 });
 
