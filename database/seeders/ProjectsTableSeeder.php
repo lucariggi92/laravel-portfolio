@@ -21,10 +21,13 @@ class ProjectsTableSeeder extends Seeder
 
             $project->title = $faker->sentence(); 
             $project->description = $faker->paragraphs(3, true);
-            $project->technologies = $faker->words(3, true);
+            
+
             $project->link_github = 'https://github.com/tuo-utente/' . $faker->slug();
             $project->type_id = rand(1,5);
             $project->save();
+
+             $project->technologies()->attach(array_rand(array_flip(range(1, 7)), rand(1, 3)));
          
         }
     }

@@ -33,7 +33,9 @@
                     </div>
                     <div class="mb-3">
                         <h5>Tecnologie</h5>
-                        <span class="badge bg-primary">{{ $project->technologies }}</span>
+                        @foreach($project->technologies as $technology)
+                        <span class="badge" style="background-color:{{$technology->color}}">{{ $technology->name }}</span>
+                        @endforeach
                     </div>
                     <div class="mb-3">
                         <h5>Link GitHub</h5>

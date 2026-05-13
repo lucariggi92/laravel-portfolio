@@ -26,9 +26,13 @@
         <input type="text" name="description" id="description" value="{{$project->description}}">
     </div>
 
-      <div class="form-control mb-3 d-flex flex-column">
-        <label for="technologies">Tecnologie</label>
-        <input type="text" name="technologies" id="technologies" value="{{$project->technologies}}">
+      <div class="form-control mb-3 d-flex flex-wrap">
+      @foreach($technologies as $technology)
+      <div class="me-3">
+         <input type="checkbox" name="technologies[]" value="{{$technology->id}}" id="technology-{{$technology->id}}" {{$project->technologies->contains($technology->id) ? "checked": " "}}>
+          <label for="technology-{{$technology->id}}">{{$technology->name}}</label>
+           </div>
+          @endforeach
     </div>
 
     

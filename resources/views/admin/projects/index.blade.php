@@ -30,7 +30,9 @@
                         <tr>
                             <td>{{ $project->id }}</td>
                             <td>{{ $project->title }}</td>
-                            <td>{{ $project->technologies }}</td>
+                            <td>@foreach($project->technologies as $technology)
+                                <span class="badge" style="background-color:{{$technology->color}}" bg-primary">{{ $technology->name }}</span>
+                                @endforeach</td>
                             <td>
                                 <a href="{{ $project->link_github }}" target="_blank">Vedi repo</a>
                             </td>
