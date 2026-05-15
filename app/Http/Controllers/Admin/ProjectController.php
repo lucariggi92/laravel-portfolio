@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology; 
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -45,6 +46,13 @@ class ProjectController extends Controller
         $newProject->description = $data['description'];
                $newProject->link_github = $data['link_github'];
          $newProject->type_id = $data['type_id'];
+
+
+         if(array_key_exists("image", $data)){
+
+            $img_url = Storage::putFile("projects", $data["image"]);
+            $newProject->image = $img_url;
+         }
 
         $newProject->save();
 
@@ -93,6 +101,14 @@ if($request->has("technologies")){
         $project->link_github = $data['link_github'];
         $project->type_id = $data['type_id'];
 
+        if(array_key_exists("images", $data)){
+
+        Storage::delete($project->image);
+         $img_url = Storage::putFile("projects", $data["image"]);
+         $project->image = $img_url;
+
+        }
+
         $project->update();
 
             if($request->has("technologies")){
@@ -114,6 +130,11 @@ if($request->has("technologies")){
      */
     public function destroy(Project $project)
     {
+         $project->technologies()->detach();
+         
+         if($project->image){
+            Storage::delete($project->image);
+         }
         $project->delete();
         return redirect()->route("admin.projects.index");
     }

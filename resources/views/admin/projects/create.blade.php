@@ -3,7 +3,7 @@
 @section("title", "Aggiungi un Progetto")
 
 @section("content")
-<form action="{{route("admin.projects.store")}}" method="POST">
+<form action="{{route("admin.projects.store")}}" method="POST" enctype="multipart/form-data">>
     @csrf
     
     <div class="form-control mb-3 d-flex flex-column">
@@ -41,6 +41,11 @@
       <div class="form-control mb-3 d-flex flex-column">
         <label for="link_github">GitHub</label>
         <input type="text" name="link_github" id="link_github">
+    </div>
+
+    <div class="form-control mb-3 d-flex flex-column">
+          <label for="image">Immagine</label>
+        <input type="file" name="image" id="image">
     </div>
 
     <input type="submit" value="Salva">

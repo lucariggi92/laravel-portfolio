@@ -3,7 +3,7 @@
 @section("title", "Modifica il Progetto")
 
 @section("content")
-<form action="{{route("admin.projects.update", $project) }}" method="POST">
+<form action="{{route("admin.projects.update", $project) }}" method="POST" ecntype="multipart/form-data">
     @csrf
     @method("PUT")
     
@@ -40,6 +40,19 @@
         <label for="link_github">GitHub</label>
         <input type="text" name="link_github" id="link_github" value="{{$project->link_github}}">
     </div>
+
+     <div class="form-control mb-3 d-flex flex-column">
+          <label for="image">Immagine</label>
+        <input type="file" name="image" id="image">
+
+                @if($project->image)
+                <div>
+                    <img class="img-fluid w-25"  src="{{asset("storage/" . $project->image)}}" alt="copertina">
+                </div>
+                @endif
+    </div>
+
+
 
     <input type="submit" value="Salva">
 

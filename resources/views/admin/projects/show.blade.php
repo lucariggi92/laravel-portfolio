@@ -23,6 +23,13 @@
                 <div class="card-header bg-dark text-white">
                     <h2 class="mb-0">{{ $project->title }}</h2>
                 </div>
+
+                @if($project->image)
+                <div>
+                    <img src="{{asset("storage/" . $project->image)}}" alt="copertina">
+                </div>
+                @endif
+
                 <div class="card-body">
                      <div class="mb-3">
                         <p>Tipologia:{{ $project->type->name }}</p>
